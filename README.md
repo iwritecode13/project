@@ -1,2 +1,2 @@
 # project
-project for me
+practice for me
