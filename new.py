@@ -5,7 +5,7 @@ turd = turtle.Turtle()
 turd.speed(0)
 turd.pensize(5)
 
-colors = ['red', 'blue', 'green', 'purple', 'yellor', 'orange', 'black']
+colors = ['red', 'blue', 'green', 'purple', 'yellow', 'orange', 'black']
 
 def up():
     turd.setheading(90)
@@ -24,21 +24,22 @@ def right():
     turd.forward(100)
 
 def clickleft(x, y):
-    turd.color = random.choice(colors)
+    turd.color(random.choice(colors))
 
 def clickright(x, y):
+    print('rightclick')
     turd.stamp()
 
 turtle.listen()
 
 # turtle.onclick(clickleft, 1)
 
-turtle.onscreenclick(clickleft)
-turtle.onscreenclick(clickright, 3)
+turtle.onscreenclick(clickleft, 1)
+turtle.onscreenclick(clickright, 2)
 
-turtle.onkey(up, 'Up')
-turtle.onkey(down, 'Down')
-turtle.onkey(right, 'Right')
-turtle.onkey(left, 'Left')
+turtle.onkey(up, 'w')
+turtle.onkey(down, 's')
+turtle.onkey(right, 'd')
+turtle.onkey(left, 'a')
 
 turtle.done()
