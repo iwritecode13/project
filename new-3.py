@@ -1,54 +1,103 @@
-import turtle, random
+import turtle, random, sys
 from turtle import Turtle, Screen
 
 screen = Screen()
-screen.setup(800,800)
+screen.setup(800, 800)
+screen.tracer(0, 0)
 
-winheight = 350
+turd = Turtle('turtle')
+turd.speed(0)
 
-turd1 = Turtle('turtle')
-turd2 = Turtle('turtle')
-turd3 = Turtle('turtle')
-turd4 = Turtle('turtle')
-turd5 = Turtle('turtle')
-turd6 = Turtle('turtle')
-turd7 = Turtle('turtle')
-
-turds = [turd1, turd2, turd3, turd4, turd5, turd6, turd7]
-
-turd1.color('blue')
-turd2.color('yellow')
-turd3.color('green')
-turd4.color('pink')
-turd5.color('orange')
-turd6.color('purple')
-turd7.color('aqua')
-
-for turd in turds:
-    turd.pu()
-    turd.lt(90)
-
-turd1.setpos(-250, -300)
-turd2.setpos(-250+(500/6), -300)
-turd3.setpos(-250+2*(500/6), -300)
-turd4.setpos(-250+3*(500/6), -300)
-turd5.setpos(-250+4*(500/6), -300)
-turd6.setpos(-250+5*(500/6), -300)
-turd7.setpos(-250+6*(500/6), -300)
-
-for turd in turds:
+def square(size):
     turd.pd()
+    turd.color('lightblue')
+    turd.begin_fill()
+    for i in range(4):
+        turd.fd(size)
+        turd.lt(90)
+    turd.end_fill()
+    turd.pu()
 
-def move():
-    for turd in turds:
-        distance = random.randint(1, 50)
-        turd.forward(distance)
-        print(turd, turd.position())
-        if turd.ycor() >= winheight:
-            print(turd.color().upper(), ' has won!')
-            return
-    move()
+def triangle(size):
+    turd.pd()
+    turd.color('black')
+    turd.begin_fill()
+    turd.lt(30)
+    turd.forward(size)
+    turd.lt(120)
+    turd.forward(size)
+    turd.lt(120)
+    turd.forward(size)
+    turd.end_fill()
+    turd.pu()
 
-move()
+def hexagon(size):
+    turd.pd()
+    turd.color('pink')
+    turd.begin_fill()
+    for i in range(6):
+        turd.lt(60)
+        turd.forward(size)
+    turd.end_fill()
+    turd.pu()
+
+def shape():
+    hexagon(30)
+    turd.rt(30)
+    for i in range(6):
+        turd.rt(150)
+        turd.fd(30)
+        turd.lt(90)
+        square(30)
+
+    turd.fd(30)
+    turd.lt(90)
+    turd.fd(30)
+    triangle(30)
+    
+    for i in range(5):
+        turd.lt(120)
+        turd.fd(30)
+        turd.lt(30)
+        turd.fd(30)
+        triangle(30)
+
+def row():
+    shape()
+    for i in range(4):
+        turd.fd(-30)
+        turd.lt(150)
+        turd.fd(30)
+        turd.rt(30)
+        turd.fd(30)
+        turd.rt(30)
+        turd.fd(30)
+        shape()
+        turd.lt(120)
+        turd.fd(30)
+        turd.rt(90)
+        turd.fd(30)
+        turd.lt(60)
+        turd.fd(30)
+        shape()
+
+def move(times):
+    turd.pu()
+    turd.setpos(-225, -275)
+    for i in range(times):
+        turd.fd(30)
+        turd.lt(30)
+        turd.fd(30)
+        turd.rt(60)
+        turd.fd(30)
+        turd.lt(30)
+    
+    turd.lt(90)
+    turd.stamp()
+
+move(0)
+for i in range(7):
+    row()
+    move(i+1)
 
 screen.mainloop()
