@@ -1,23 +1,23 @@
-from tkinter import *
-from PIL import ImageTk, Image
-import pygame, os, sys
+import turtle
+import random
 
-root = Tk()
-root.title('Project')
-root.geometry('400x400')
-root.config(bg='BLACK')
+colors = ['red', 'blue', 'green', 'purple', 'yellow', 'orange', 'black']
 
-blue = '#0000ff'
+turd1 = turtle.Turtle()
+turd1.color('red', 'blue')
+turd1.pensize(3)
+turd1.shape('turtle')
 
-def quit_func():
-    root.destroy()
-    sys.exit()
+for i in range(5):
+    randcolor = random.randint(0, len(colors))
+    turd1.color(colors[randcolor])
+    rand1 = random.randint(-300, 300)
+    rand2 = random.randint(-300, 300)
+    turd1.penup()
+    turd1.setpos(rand1, rand2)
+    turd1.pendown()
+    turd1.begin_fill()
+    turd1.circle(random.randint(10, 80))
+    turd1.end_fill()
 
-label = Label(root, text='test', bg=blue, fg='WHITE')
-
-button_quit = Button(root, text='quit', highlightbackground='WHITE', highlightforeground=blue, command=quit_func)
-
-label.grid(row=0, column=0)
-button_quit.grid(row=1, column=0)
-
-root.mainloop()
+turtle.done()
