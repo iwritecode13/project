@@ -7,9 +7,10 @@ turd1 = turtle.Turtle()
 turd1.color('red', 'blue')
 turd1.pensize(3)
 turd1.shape('turtle')
+turd1.speed(10)
 
 for i in range(5):
-    randcolor = random.randint(0, len(colors))
+    randcolor = random.randint(0, len(colors)-1)
     turd1.color(colors[randcolor])
     rand1 = random.randint(-300, 300)
     rand2 = random.randint(-300, 300)
